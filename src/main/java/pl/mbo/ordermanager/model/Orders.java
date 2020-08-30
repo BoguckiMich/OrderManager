@@ -1,14 +1,12 @@
 package pl.mbo.ordermanager.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -20,6 +18,7 @@ public class Orders {
     private String name;
     private OrderStatus orderStatus;
 
+    @ToString.Exclude
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 }

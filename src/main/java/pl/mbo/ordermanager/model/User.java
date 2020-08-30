@@ -1,18 +1,16 @@
 package pl.mbo.ordermanager.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Getter
+@Setter
 public class User {
 
     @Id
@@ -25,5 +23,6 @@ public class User {
     private Boolean can_assign_order;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private Set<Orders> ordersSet;
+    private Set<Orders> orders;
+
 }

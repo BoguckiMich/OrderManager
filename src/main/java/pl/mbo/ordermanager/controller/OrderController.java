@@ -28,13 +28,11 @@ public class OrderController {
     @GetMapping("/{id}")
     public Orders getOrderById(@PathVariable(name = "id") Long id){return orderService.findById(id);}
 
-    //todo: deletemapping bez remove
-    @GetMapping("/remove/{id}")
+    @DeleteMapping("/{id}")
     public void removeOrderById(@PathVariable(name = "id") Long id) {boolean success = orderService.deleteOrder(id);}
 
-    //todo: bez upadte, samo id
-//    @PatchMapping("/update/{id}")
-//    public void updateOrder(@PathVariable(name = "id") Long id,@RequestBody User user){
-//        boolean success = orderService.updateOrder(id, user);
-//    }
+    @PatchMapping("/{id}")
+    public void updateOrder(@PathVariable(name = "id") Long id,@RequestBody User user){
+        boolean success = orderService.updateOrder(id, user);
+    }
 }
