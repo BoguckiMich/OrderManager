@@ -18,7 +18,8 @@ public class Orders {
     private String name;
     private OrderStatus orderStatus;
 
-    @ToString.Exclude
+
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
+
 }

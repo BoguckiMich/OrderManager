@@ -2,19 +2,13 @@ package pl.mbo.ordermanager.model;
 
 import lombok.*;
 
-import javax.persistence.*;
-import java.util.Set;
-
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Getter
 @Setter
-public class User {
+public class UserDto {
 
-    @Id
-    @GeneratedValue
     private Long id;
     private String firstName;
     private String lastName;
@@ -22,8 +16,10 @@ public class User {
     private Boolean can_create_order;
     private Boolean can_assign_order;
 
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private Set<Orders> orders;
-
+//    public UserDto(User user){
+//        this.id = user.getId();
+//        this.firstName = user.getFirstName();
+//        this.lastName =user.getLastName();
+//        this.phone=user.getPhone();
+//    }
 }

@@ -1,6 +1,7 @@
 package pl.mbo.ordermanager.controller;
 
 import org.springframework.web.bind.annotation.*;
+import pl.mbo.ordermanager.model.OrderDto;
 import pl.mbo.ordermanager.model.Orders;
 import pl.mbo.ordermanager.model.User;
 import pl.mbo.ordermanager.service.OrderService;
@@ -18,12 +19,15 @@ public class OrderController {
     }
 
     @PostMapping("/create")
-    public void createOrder(@RequestBody Orders order){
+    public void createOrder(@RequestBody OrderDto order){
         boolean success = orderService.createOrder(order);
     }
 
     @GetMapping("")
-    public List<Orders> getOrders(){return orderService.findAllOrders();}
+    public List<OrderDto> getOrders(){
+        List<OrderDto> orderDtos = orderService.findAllOrders();
+        return orderDtos;
+    }
 
     @GetMapping("/{id}")
     public Orders getOrderById(@PathVariable(name = "id") Long id){return orderService.findById(id);}
