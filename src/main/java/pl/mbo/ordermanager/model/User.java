@@ -1,5 +1,6 @@
 package pl.mbo.ordermanager.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,7 +23,7 @@ public class User {
     private Boolean can_create_order;
     private Boolean can_assign_order;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<Orders> orders;
 

@@ -1,6 +1,11 @@
 package pl.mbo.ordermanager.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.Optional;
 
 @Getter
 @Setter
@@ -10,16 +15,16 @@ public class OrderDto {
     private Long id;
     private String name;
     private OrderStatus orderStatus;
-    private UserDto userDto;
+    private Optional<UserDto> userDto;
 
     public OrderDto (Orders orders){
         this.id = orders.getId();
         this.name = orders.getName();
         this.orderStatus = orders.getOrderStatus();
-        this.userDto = UserDto.builder()
+        this.userDto = Optional.ofNullable(UserDto.builder()
                 .firstName(orders.getUser().getFirstName())
                 .lastName(orders.getUser().getLastName())
-                .phone(orders.getUser().getPhone()).build();
+                .phone(orders.getUser().getPhone()).build());
     }
 }
 

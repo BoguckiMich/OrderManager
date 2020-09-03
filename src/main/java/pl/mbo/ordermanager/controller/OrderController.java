@@ -25,8 +25,7 @@ public class OrderController {
 
     @GetMapping("")
     public List<OrderDto> getOrders(){
-        List<OrderDto> orderDtos = orderService.findAllOrders();
-        return orderDtos;
+        return orderService.findAllOrders();
     }
 
     @GetMapping("/{id}")

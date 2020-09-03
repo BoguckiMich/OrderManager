@@ -1,5 +1,6 @@
 package pl.mbo.ordermanager.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,7 +19,7 @@ public class Orders {
     private String name;
     private OrderStatus orderStatus;
 
-
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 

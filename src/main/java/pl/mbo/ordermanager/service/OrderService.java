@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 import pl.mbo.ordermanager.model.OrderDto;
 import pl.mbo.ordermanager.model.Orders;
 import pl.mbo.ordermanager.model.User;
-import pl.mbo.ordermanager.model.UserDto;
 import pl.mbo.ordermanager.repository.OrderRepository;
 
 import java.util.List;
@@ -30,18 +29,18 @@ public class OrderService {
         return false;
     }
 
-    public List<OrderDto> findAllOrders() {
-         return (List<OrderDto>)orderRepository.findAll()
-                .stream()
-                .map(this::convertOrderToOrderDto)
-                .collect(Collectors.toList());
-    }
 //    public List<OrderDto> findAllOrders() {
-//        return orderRepository.findAll()
+//         return (List<OrderDto>)orderRepository.findAll()
 //                .stream()
-//                .map(OrderDto::new)
+//                .map(this::convertOrderToOrderDto)
 //                .collect(Collectors.toList());
 //    }
+public List<OrderDto> findAllOrders() {
+    return orderRepository.findAll()
+            .stream()
+            .map(OrderDto::new)
+            .collect(Collectors.toList());
+}
 
     public Orders findById(Long id) {
         Optional<Orders> optionalOrders = orderRepository.findById(id);
@@ -65,15 +64,15 @@ public class OrderService {
         }).orElse(false);
     }
 
-    private OrderDto convertOrderToOrderDto(Orders orders){
-        OrderDto orderDto = new OrderDto();
-        orderDto.setId(orders.getId());
-        orderDto.setName(orders.getName());
-        orderDto.setOrderStatus(orders.getOrderStatus());
-        orderDto.setUserDto(UserDto.builder()
-                .firstName(orders.getUser().getFirstName())
-                .lastName(orders.getUser().getLastName())
-                .phone(orders.getUser().getPhone()).build());
-        return orderDto;
-    }
+//    private OrderDto convertOrderToOrderDto(Orders orders){
+//        OrderDto orderDto = new OrderDto();
+//        orderDto.setId(orders.getId());
+//        orderDto.setName(orders.getName());
+//        orderDto.setOrderStatus(orders.getOrderStatus());
+//        orderDto.setUserDto(UserDto.builder()
+//                .firstName(orders.getUser().getFirstName())
+//                .lastName(orders.getUser().getLastName())
+//                .phone(orders.getUser().getPhone()).build());
+//        return orderDto;
+//    }
 }
