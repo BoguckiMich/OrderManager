@@ -21,10 +21,15 @@ public class OrderDto {
         this.id = orders.getId();
         this.name = orders.getName();
         this.orderStatus = orders.getOrderStatus();
-        this.userDto = Optional.ofNullable(UserDto.builder()
-                .firstName(orders.getUser().getFirstName())
-                .lastName(orders.getUser().getLastName())
-                .phone(orders.getUser().getPhone()).build());
+        User user = orders.getUser();
+        if (user != null) {
+            this.userDto = UserDto.builder()
+                    .firstName(user.getFirstName())
+                    .lastName(user.getLastName())
+                    .phone(user.getPhone())
+                    .build();
+        }
+
     }
 }
 
