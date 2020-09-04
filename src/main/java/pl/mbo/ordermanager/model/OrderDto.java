@@ -15,7 +15,7 @@ public class OrderDto {
     private Long id;
     private String name;
     private OrderStatus orderStatus;
-    private Optional<UserDto> userDto;
+    private UserDto userDto;
 
     public OrderDto (Orders orders){
         this.id = orders.getId();
