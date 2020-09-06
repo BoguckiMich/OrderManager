@@ -21,6 +21,8 @@ public class User {
     private String phone;
     private Boolean can_create_order;
     private Boolean can_assign_order;
+    private String password;
+    private String mail;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private Set<Orders> orders;
