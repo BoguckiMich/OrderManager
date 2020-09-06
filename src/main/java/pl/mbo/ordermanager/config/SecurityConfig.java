@@ -24,10 +24,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().httpBasic()
+//        http.formLogin().permitAll()
                 .and().authorizeRequests()
 //                .antMatchers(HttpMethod.GET,"/order").permitAll()
                 .antMatchers(HttpMethod.GET,"/order").authenticated()
-                .anyRequest().authenticated()
-                .and().rememberMe().tokenValiditySeconds(60);
+                .anyRequest().authenticated();
     }
 }
