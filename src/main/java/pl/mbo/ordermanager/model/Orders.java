@@ -23,4 +23,7 @@ public class Orders {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
+    @ManyToOne
+    private Client client;
 }
+
