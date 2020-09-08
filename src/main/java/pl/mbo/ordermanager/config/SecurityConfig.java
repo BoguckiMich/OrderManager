@@ -1,7 +1,6 @@
 package pl.mbo.ordermanager.config;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -23,7 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().httpBasic()
+        http.cors().and().csrf().disable().httpBasic()
 //        http.formLogin().permitAll()
                 .and().authorizeRequests()
 //                .antMatchers(HttpMethod.GET,"/order").permitAll()
