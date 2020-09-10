@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/clients")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ClientController {
     private final ClientService clientService;
 
@@ -20,7 +21,7 @@ public class ClientController {
         boolean success = clientService.createClient(client);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<Client> getClients() {
         return clientService.findAllClients();
     }
