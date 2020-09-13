@@ -41,9 +41,9 @@ public class UserSecurityService implements UserDetailsService, InitializingBean
 
     @Override
     public void afterPropertiesSet() throws Exception {
-//        pl.mbo.ordermanager.model.User user = new pl.mbo.ordermanager.model.User();
-//        user.setFirstName("Michalek");
-//        user.setPassword(encoder.encode("qwe123"));
-//        userRepository.save(user);
+        pl.mbo.ordermanager.model.User user = new pl.mbo.ordermanager.model.User();
+        user.setFirstName("Michalek");
+        user.setPassword(encoder.encode("qwe123"));
+        userRepository.save(user);
     }
 }
