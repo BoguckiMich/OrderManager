@@ -25,5 +25,7 @@ public class Orders {
 
     @ManyToOne
     private Client client;
+
+    //komentarz
 }
 
